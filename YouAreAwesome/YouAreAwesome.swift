@@ -45,6 +45,7 @@ struct YouAreAwesome: View {
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .padding()
+                .animation(.easeInOut(duration: 0.25), value: messageString)
             
             Image(imageName)
                 .resizable()
@@ -52,12 +53,13 @@ struct YouAreAwesome: View {
                 .cornerRadius(30)
                 .shadow(radius: 10)
                 .padding()
+                .animation(.default, value: messageString)
             
             Spacer()
             
             HStack {
                 Text(toggleSound ? "Sound On" : "Sound Off")
-                    .foregroundColor(toggleSound ? .green : .blue)
+                    .foregroundColor(toggleSound ? .green : .mint)
                 Toggle("", isOn: $toggleSound)
                     .labelsHidden()
                     .onChange(of: toggleSound) { _ in
@@ -93,7 +95,7 @@ struct YouAreAwesome: View {
                 .buttonStyle(.borderedProminent)
                 
             }  // HStack
-            
+            .tint(.accentColor)
             
         }  // VStack
         .padding()
